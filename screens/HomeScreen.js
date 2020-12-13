@@ -1,6 +1,7 @@
 import React, { Component } from "react";
 import { View, Text, Button, StyleSheet, Icon } from "react-native";
 import * as Location from "expo-location"; // expo-location allows reading geolocation information from the device.
+import * as Permissions from "expo-permissions"; //expo-permissions will ask for the user's permission first
 
 export default class HomeScreen extends Component {
   state = {
@@ -11,19 +12,27 @@ export default class HomeScreen extends Component {
   };
 
   getLocation = async () => {
-    let { status } = await Location.requestPermissionsAsync();
+    let { status } = await Location.requestPermissionsAsync(
+      Permissions.LOCATION
+    );
     if (status !== "granted") {
       this.setState({ errorMsg: "Permission to access location was denied" });
     }
-
-    let currLocation = await Location.getCurrentPositionAsync({});
-    this.setState(
-      {
-        longitude: currLocation.coords.longitude,
-        latitude: currLocation.coords.latitude,
-      },
-      this.getData
-    );
+    let gpsServiceStatus = await Location.hasServicesEnabledAsync();
+    if (gpsServiceStatus) {
+      let currLocation = await Location.getCurrentPositionAsync({
+        accuracy: Location.Accuracy.High,
+      });
+      this.setState(
+        {
+          longitude: currLocation.coords.longitude,
+          latitude: currLocation.coords.latitude,
+        },
+        this.getData
+      );
+    } else {
+      alert("Please Enable Location Services");
+    }
   };
 
   getData = () => {
@@ -36,6 +45,7 @@ export default class HomeScreen extends Component {
       {
         method: "GET",
         headers: headers,
+        mode: "no-cors",
       }
     );
     fetch(req)
