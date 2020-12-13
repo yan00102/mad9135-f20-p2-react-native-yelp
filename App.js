@@ -10,7 +10,7 @@ export default function App() {
   const Stack = createStackNavigator();
 
   return (
-    <NavigationContainer>
+    <NavigationContainer style={styles.container}>
       <Stack.Navigator initialRouteName="Search Your Favourite">
         <Stack.Screen
           name="HomeScreen Yelp"
@@ -35,7 +35,7 @@ export default function App() {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: "#fff",
+    backgroundColor: "#fefaf9",
     alignItems: "center",
     justifyContent: "center",
   },

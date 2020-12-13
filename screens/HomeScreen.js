@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import { View, Text, Button } from "react-native";
+import { View, Text, Button, StyleSheet, Icon } from "react-native";
 import * as Location from "expo-location"; // expo-location allows reading geolocation information from the device.
 
 export default class HomeScreen extends Component {
@@ -51,8 +51,9 @@ export default class HomeScreen extends Component {
 
   render() {
     return (
-      <View style={{ flex: 1, alignItems: "center", justifyContent: "center" }}>
-        <Text>Home Screen</Text>
+      <View style={{ flex: 1, alignItems: "center", justifyContent: "center" ,backgroundColor:'#fefaf9'}}>
+
+        
         <Button
           title="Search Restaurants"
           onPress={this.getLocation}
@@ -64,3 +65,4 @@ export default class HomeScreen extends Component {
     );
   }
 }
+
