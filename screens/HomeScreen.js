@@ -133,7 +133,3 @@ const styles = StyleSheet.create({
     color: "#FFF",
   },
 });
-<<<<<<< HEAD
-
-=======
->>>>>>> refs/remotes/origin/main
