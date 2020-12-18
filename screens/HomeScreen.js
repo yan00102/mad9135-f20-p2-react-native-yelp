@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import { SafeAreaView, StyleSheet, View, Text, Button,Image } from "react-native"
+import { SafeAreaView, StyleSheet, View, Text, Button ,Image} from "react-native";
 import * as Location from "expo-location"; // expo-location allows reading geolocation information from the device.
 import * as Permissions from "expo-permissions"; //expo-permissions will ask for the user's permission first
 import Spinner from "react-native-loading-spinner-overlay"; //loading overlay
@@ -15,7 +15,17 @@ export default class HomeScreen extends Component {
       "GePd89bGyGTrP3_4k6JJ4sv0W1pn99sL38JxuNUEb3H4uOyI3m5P8ZkhqK7CqxAPRwfhfDB-_pAgVmx2bdW708H74m43vDbM_cmhhPJXxof7hWVoFW4VJ22QHJwIX3Yx",
   };
 
+  // startLoading = () => {
+  //   this.setState(
+  //     { loading: true }
+  //     // setTimeout(() => {
+  //     //   this.setState({ loading: false });
+  //     // }, 5000)
+  //   );
+  // };
+
   getLocation = async () => {
+    this.startLoading;
     let { status } = await Location.requestPermissionsAsync(
       Permissions.LOCATION
     );
@@ -24,9 +34,11 @@ export default class HomeScreen extends Component {
     }
     let gpsServiceStatus = await Location.hasServicesEnabledAsync();
     if (gpsServiceStatus) {
+      this.setState({ loading: true });
       let currLocation = await Location.getCurrentPositionAsync({
         accuracy: Location.Accuracy.High,
       });
+
       this.setState(
         {
           longitude: currLocation.coords.longitude,
@@ -55,6 +67,7 @@ export default class HomeScreen extends Component {
     fetch(req)
       .then((res) => res.json())
       .then((data) => {
+        this.setState({ loading: false });
         this.props.navigation.navigate("SecondScreen Nearby Restaurants", {
           data: data,
         });
@@ -120,4 +133,7 @@ const styles = StyleSheet.create({
     color: "#FFF",
   },
 });
+<<<<<<< HEAD
 
+=======
+>>>>>>> refs/remotes/origin/main
