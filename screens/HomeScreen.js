@@ -13,15 +13,6 @@ export default class HomeScreen extends Component {
       "GePd89bGyGTrP3_4k6JJ4sv0W1pn99sL38JxuNUEb3H4uOyI3m5P8ZkhqK7CqxAPRwfhfDB-_pAgVmx2bdW708H74m43vDbM_cmhhPJXxof7hWVoFW4VJ22QHJwIX3Yx",
   };
 
-  // startLoading = () => {
-  //   this.setState(
-  //     { loading: true }
-  //     // setTimeout(() => {
-  //     //   this.setState({ loading: false });
-  //     // }, 5000)
-  //   );
-  // };
-
   getLocation = async () => {
     this.startLoading;
     let { status } = await Location.requestPermissionsAsync(
