@@ -1,9 +1,10 @@
 import React, { Component } from "react";
-import { View, Button, Image } from "react-native";
+import {SafeAreaView, StyleSheet, View, Text, Button, Image } from "react-native";
 import * as Location from "expo-location"; // expo-location allows reading geolocation information from the device.
 import * as Permissions from "expo-permissions"; //expo-permissions will ask for the user's permission first
 
 export default class HomeScreen extends Component {
+  
   state = {
     longitude: null,
     latitude: null,
@@ -58,9 +59,13 @@ export default class HomeScreen extends Component {
       })
       .catch((err) => console.log(err));
   };
+  
 
   render() {
     return (
+      <SafeAreaView
+      style={{ flex: 1, alignItems: "center", justifyContent: "center" }}
+    >
       <View style={{ flex: 1, alignItems: "center", justifyContent: "center" ,backgroundColor:'#fefaf9'}}>
         <Image style={ {width: 100, height: 100,marginBottom:30} } 
                 source={require('../assets/yelpIcon.png')} />
@@ -84,7 +89,9 @@ export default class HomeScreen extends Component {
         </View>
         
       </View>
+      </SafeAreaView>
     );
   }
+  
 }
 
