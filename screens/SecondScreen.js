@@ -20,7 +20,7 @@ export default function SecondScreen({ route, navigation }) {
          <TouchableOpacity onPress={onPress} style={[styles.item, style]}>
         <Text style={styles.title}> {name}</Text>
         <Text style={styles.distance}>
-          Distance: {(distance / 1000).toFixed(2)}
+         {(distance / 1000).toFixed(2)} km away
         </Text>
       </TouchableOpacity>
       
@@ -67,12 +67,15 @@ export default function SecondScreen({ route, navigation }) {
       elevation: 5,
     },
     title: {
-      fontSize: 25,
+     color:'darkblue',
+      fontSize:23, 
+      fontWeight:'bold',
       margin:'auto',
     },
     distance: {
       fontSize:18,
       margin:10,
+      color:'gray',
     }
   });
 

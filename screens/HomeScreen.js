@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import { View, Text, Button, StyleSheet, Icon } from "react-native";
+import { View, Button, Image } from "react-native";
 import * as Location from "expo-location"; // expo-location allows reading geolocation information from the device.
 import * as Permissions from "expo-permissions"; //expo-permissions will ask for the user's permission first
 
@@ -62,15 +62,27 @@ export default class HomeScreen extends Component {
   render() {
     return (
       <View style={{ flex: 1, alignItems: "center", justifyContent: "center" ,backgroundColor:'#fefaf9'}}>
-
-        
-        <Button
+        <Image style={ {width: 100, height: 100,marginBottom:30} } 
+                source={require('../assets/yelpIcon.png')} />
+        <View style = {{display:'flex', justifyContent:'center', alignItems:'center', backgroundColor:'#ffffff',
+                        height:60, width:300,       shadowColor: "gray",
+                        shadowOffset: {
+                          width: 0,
+                          height: 2,
+                        },
+                        shadowOpacity: 0.25,
+                        shadowRadius: 3.84,
+                        
+                        elevation: 5 ,borderRadius:40}}>
+        <Button style = {{color:'#ffffff' }}
           title="Search Restaurants"
           onPress={this.getLocation}
           //   onPress={() =>
           //     this.props.navigation.navigate("SecondScreen Nearby Restaurants")
           //   }
         />
+        </View>
+        
       </View>
     );
   }
