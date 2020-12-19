@@ -1,9 +1,15 @@
 import React, { Component } from "react";
-import { SafeAreaView, StyleSheet, View, Text, Button ,Image} from "react-native";
+import {
+  SafeAreaView,
+  StyleSheet,
+  View,
+  Text,
+  Button,
+  Image,
+} from "react-native";
 import * as Location from "expo-location"; // expo-location allows reading geolocation information from the device.
 import * as Permissions from "expo-permissions"; //expo-permissions will ask for the user's permission first
 import Spinner from "react-native-loading-spinner-overlay"; //loading overlay
-
 
 export default class HomeScreen extends Component {
   state = {
@@ -67,41 +73,45 @@ export default class HomeScreen extends Component {
 
   render() {
     return (
-    //   <SafeAreaView
-    //   style={{ flex: 1, alignItems: "center", justifyContent: "center" }}
-    // >
       <View style={styles.container}>
-      <Spinner
-
-            style={styles.spinner}
-            //visibility of Overlay Loading Spinner
-            visible={this.state.loading}
-            textContent={"Loading..."}
-            textStyle={styles.spinnerTextStyle}
-          />
-        <Image style={ {width: 100, height: 100,marginBottom:60} } 
-                source={require('../assets/yelpIcon.png')} />
-        <View style = {{display:'flex', justifyContent:'center', alignItems:'center', backgroundColor:'#ffffff',
-                        height:60, width:300,       shadowColor: "gray",
-                        shadowOffset: {
-                          width: 0,
-                          height: 2,
-                        },
-                        shadowOpacity: 0.25,
-                        shadowRadius: 3.84,
-                        
-                        elevation: 5 ,borderRadius:40}}>
-        <Button style = {{color:'#ffffff' }}
-          title="Search Restaurants"
-          onPress={this.getLocation}
-          //   onPress={() =>
-          //     this.props.navigation.navigate("SecondScreen Nearby Restaurants")
-          //   }
+        <Spinner
+          style={styles.spinner}
+          //visibility of Overlay Loading Spinner
+          visible={this.state.loading}
+          textContent={"Loading..."}
+          textStyle={styles.spinnerTextStyle}
         />
+        <Image
+          style={{ width: 100, height: 100, marginBottom: 60 }}
+          source={require("../assets/yelpIcon.png")}
+        />
+        <View
+          style={{
+            display: "flex",
+            justifyContent: "center",
+            alignItems: "center",
+            backgroundColor: "#ffffff",
+            height: 60,
+            width: 300,
+            shadowColor: "gray",
+            shadowOffset: {
+              width: 0,
+              height: 2,
+            },
+            shadowOpacity: 0.25,
+            shadowRadius: 3.84,
+
+            elevation: 5,
+            borderRadius: 40,
+          }}
+        >
+          <Button
+            style={{ color: "#ffffff" }}
+            title="Search Restaurants"
+            onPress={this.getLocation}
+          />
         </View>
-        
       </View>
-      // </SafeAreaView>
     );
   }
 }
@@ -116,9 +126,9 @@ const styles = StyleSheet.create({
     backgroundColor: "#fefaf9",
     padding: 8,
   },
-  spinner:{
-      backgroundColor:'#fefaf9',
-      opacity:0.5
+  spinner: {
+    backgroundColor: "#fefaf9",
+    opacity: 0.5,
   },
   spinnerTextStyle: {
     color: "#FFF",

@@ -11,7 +11,6 @@ import {
 
 export default function SecondScreen({ route, navigation }) {
   const { data } = route.params;
-  // console.log(data);
 
   const Item = ({ name, distance, style, onPress }) => {
     return (
