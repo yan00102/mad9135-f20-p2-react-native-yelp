@@ -1,8 +1,15 @@
 import React, { Component } from "react";
-import { SafeAreaView, StyleSheet, View, Text, Button } from "react-native";
-import * as Location from "expo-location"; // expo-location allows reading geolocation information from the device.
-import * as Permissions from "expo-permissions"; //expo-permissions will ask for the user's permission first
-import Spinner from "react-native-loading-spinner-overlay"; //loading overlay
+import {
+  SafeAreaView,
+  StyleSheet,
+  View,
+  Text,
+  Button,
+  Image,
+} from "react-native";
+import * as Location from "expo-location";
+import * as Permissions from "expo-permissions";
+import Spinner from "react-native-loading-spinner-overlay";
 
 export default class HomeScreen extends Component {
   state = {
@@ -12,15 +19,6 @@ export default class HomeScreen extends Component {
     API_KEY:
       "GePd89bGyGTrP3_4k6JJ4sv0W1pn99sL38JxuNUEb3H4uOyI3m5P8ZkhqK7CqxAPRwfhfDB-_pAgVmx2bdW708H74m43vDbM_cmhhPJXxof7hWVoFW4VJ22QHJwIX3Yx",
   };
-
-  // startLoading = () => {
-  //   this.setState(
-  //     { loading: true }
-  //     // setTimeout(() => {
-  //     //   this.setState({ loading: false });
-  //     // }, 5000)
-  //   );
-  // };
 
   getLocation = async () => {
     this.startLoading;
@@ -69,7 +67,6 @@ export default class HomeScreen extends Component {
         this.props.navigation.navigate("SecondScreen Nearby Restaurants", {
           data: data,
         });
-        // console.log(data);
       })
       .catch((err) => console.log(err));
   };
@@ -80,22 +77,51 @@ export default class HomeScreen extends Component {
         style={{ flex: 1, alignItems: "center", justifyContent: "center" }}
       >
         <View style={styles.container}>
-          <Text>Home Screen</Text>
           <Spinner
-            //visibility of Overlay Loading Spinner
             visible={this.state.loading}
-            //Text with the Spinner
             textContent={"Loading..."}
-            //Text style of the Spinner Text
             textStyle={styles.spinnerTextStyle}
           />
-          <Button
-            title="Search Restaurants"
-            onPress={this.getLocation}
-            //   onPress={() =>
-            //     this.props.navigation.navigate("SecondScreen Nearby Restaurants")
-            //   }
+        </View>
+
+        <View
+          style={{
+            flex: 1,
+            alignItems: "center",
+            justifyContent: "center",
+            backgroundColor: "#fefaf9",
+          }}
+        >
+          <Image
+            style={{ width: 100, height: 100, marginBottom: 30 }}
+            source={require("../assets/yelpIcon.png")}
           />
+          <View
+            style={{
+              display: "flex",
+              justifyContent: "center",
+              alignItems: "center",
+              backgroundColor: "#ffffff",
+              height: 60,
+              width: 300,
+              shadowColor: "gray",
+              shadowOffset: {
+                width: 0,
+                height: 2,
+              },
+              shadowOpacity: 0.25,
+              shadowRadius: 3.84,
+
+              elevation: 5,
+              borderRadius: 40,
+            }}
+          >
+            <Button
+              style={{ color: "#ffffff" }}
+              title="Search Restaurants"
+              onPress={this.getLocation}
+            />
+          </View>
         </View>
       </SafeAreaView>
     );

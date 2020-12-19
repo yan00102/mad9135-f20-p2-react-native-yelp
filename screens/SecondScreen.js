@@ -6,6 +6,7 @@ import {
   FlatList,
   StyleSheet,
   TouchableOpacity,
+  Image,
 } from "react-native";
 
 export default function SecondScreen({ route, navigation }) {
@@ -15,9 +16,9 @@ export default function SecondScreen({ route, navigation }) {
   const Item = ({ name, distance, style, onPress }) => {
     return (
       <TouchableOpacity onPress={onPress} style={[styles.item, style]}>
-        <Text style={styles.title}>Restaurants: {name}</Text>
-        <Text style={styles.title}>
-          Distance: {(distance / 1000).toFixed(2)}
+        <Text style={styles.title}> {name}</Text>
+        <Text style={styles.distance}>
+          {(distance / 1000).toFixed(2)} km away
         </Text>
       </TouchableOpacity>
     );
@@ -34,6 +35,7 @@ export default function SecondScreen({ route, navigation }) {
       <Item
         name={item.name}
         distance={item.distance}
+        img={item.image_url}
         item={item}
         onPress={() => findSelectedRes(item)}
       />
@@ -42,18 +44,39 @@ export default function SecondScreen({ route, navigation }) {
 
   const styles = StyleSheet.create({
     item: {
-      backgroundColor: "#f9c2ff",
+      display: "flex",
+      justifyContent: "center",
+      alignItems: "flex-start",
+      backgroundColor: "#fcfeff",
+      borderRadius: 10,
       padding: 20,
       marginVertical: 8,
       marginHorizontal: 16,
+      shadowColor: "#e3e4ea",
+      shadowOffset: {
+        width: 0,
+        height: 2,
+      },
+      shadowOpacity: 0.25,
+      shadowRadius: 3.84,
+
+      elevation: 5,
     },
     title: {
-      fontSize: 32,
+      color: "darkblue",
+      fontSize: 23,
+      fontWeight: "bold",
+      margin: "auto",
+    },
+    distance: {
+      fontSize: 18,
+      margin: 10,
+      color: "gray",
     },
   });
 
   return (
-    <View>
+    <View style={{ backgroundColor: "#fefaf9" }}>
       <FlatList
         data={data.businesses.sort((a, b) => a.distance - b.distance)}
         renderItem={renderItem}
