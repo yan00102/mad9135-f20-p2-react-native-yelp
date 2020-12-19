@@ -79,11 +79,13 @@ export default class HomeScreen extends Component {
 
   render() {
     return (
-      <SafeAreaView
-      style={{ flex: 1, alignItems: "center", justifyContent: "center" }}
-    >
+    //   <SafeAreaView
+    //   style={{ flex: 1, alignItems: "center", justifyContent: "center" }}
+    // >
       <View style={styles.container}>
       <Spinner
+
+            style={styles.spinner}
             //visibility of Overlay Loading Spinner
             visible={this.state.loading}
             //Text with the Spinner
@@ -91,7 +93,7 @@ export default class HomeScreen extends Component {
             //Text style of the Spinner Text
             textStyle={styles.spinnerTextStyle}
           />
-        <Image style={ {width: 100, height: 100,marginBottom:30} } 
+        <Image style={ {width: 100, height: 100,marginBottom:60} } 
                 source={require('../assets/yelpIcon.png')} />
         <View style = {{display:'flex', justifyContent:'center', alignItems:'center', backgroundColor:'#ffffff',
                         height:60, width:300,       shadowColor: "gray",
@@ -113,7 +115,7 @@ export default class HomeScreen extends Component {
         </View>
         
       </View>
-      </SafeAreaView>
+      // </SafeAreaView>
     );
   }
   
@@ -126,8 +128,12 @@ const styles = StyleSheet.create({
     alignItems: "center",
     textAlign: "center",
     paddingTop: 30,
-    backgroundColor: "#ecf0f1",
+    backgroundColor: "#fefaf9",
     padding: 8,
+  },
+  spinner:{
+      backgroundColor:'#fefaf9',
+      opacity:0.5
   },
   spinnerTextStyle: {
     color: "#FFF",
