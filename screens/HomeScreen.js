@@ -6,7 +6,6 @@ import Spinner from "react-native-loading-spinner-overlay"; //loading overlay
 
 
 export default class HomeScreen extends Component {
-  
   state = {
     loading: false,
     longitude: null,
@@ -14,15 +13,6 @@ export default class HomeScreen extends Component {
     API_KEY:
       "GePd89bGyGTrP3_4k6JJ4sv0W1pn99sL38JxuNUEb3H4uOyI3m5P8ZkhqK7CqxAPRwfhfDB-_pAgVmx2bdW708H74m43vDbM_cmhhPJXxof7hWVoFW4VJ22QHJwIX3Yx",
   };
-
-  // startLoading = () => {
-  //   this.setState(
-  //     { loading: true }
-  //     // setTimeout(() => {
-  //     //   this.setState({ loading: false });
-  //     // }, 5000)
-  //   );
-  // };
 
   getLocation = async () => {
     this.startLoading;
@@ -71,11 +61,9 @@ export default class HomeScreen extends Component {
         this.props.navigation.navigate("SecondScreen Nearby Restaurants", {
           data: data,
         });
-        // console.log(data);
       })
       .catch((err) => console.log(err));
   };
-  
 
   render() {
     return (
@@ -88,9 +76,7 @@ export default class HomeScreen extends Component {
             style={styles.spinner}
             //visibility of Overlay Loading Spinner
             visible={this.state.loading}
-            //Text with the Spinner
             textContent={"Loading..."}
-            //Text style of the Spinner Text
             textStyle={styles.spinnerTextStyle}
           />
         <Image style={ {width: 100, height: 100,marginBottom:60} } 
@@ -118,7 +104,6 @@ export default class HomeScreen extends Component {
       // </SafeAreaView>
     );
   }
-  
 }
 
 const styles = StyleSheet.create({
